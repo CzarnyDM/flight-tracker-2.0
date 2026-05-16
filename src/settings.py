@@ -1,0 +1,10 @@
+LAT = 33.9425
+LON = -118.4081
+RAD = 20000
+LIMIT_FLIGHTS = 5
+MAX_FL = 5000 #feet
+DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1450293001510326344/0CUDF63bAYDPWOF0_mPjiHN2Q5cAkUY5LWbrgZwaNEz9jT-YUyd_NZbqO2J3DLR0K7fE"
+IMAGE = "./utils/static/images/airline_logo.jpg"
+FALLBACK_LOGO = "./utils/static/images/default_logo.png"
+STATE_FILE = "db/state.json"
+SETTINGS_FILE = "db/settings.json"

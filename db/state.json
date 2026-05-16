@@ -1,0 +1,143 @@
+{
+    "flight_id": "3fb9b1e0",
+    "callsign": "SPTAM",
+    "flight_number": "",
+    "aircraft_code": "C172",
+    "airline_iata": "N/A",
+    "airline_icao": "",
+    "altitude": 2000,
+    "flight_level": "2000 ft",
+    "ground_speed": 101,
+    "vertical_speed": 0,
+    "heading": 223,
+    "latitude": 52.4444,
+    "longitude": 21.0049,
+    "on_ground": 0,
+    "origin": "QPB",
+    "destination": "",
+    "registration": "SP-TAM",
+    "icao_24bit": "48C80C",
+    "squawk": "",
+    "timestamp": 1778950545,
+    "airline_name": "Private owner",
+    "airline_short": "N/A",
+    "owner": "N/A",
+    "status": "Scheduled",
+    "live": true,
+    "aircraft_model": "Cessna 172S Skyhawk SP",
+    "aircraft_age": null,
+    "images": {
+        "thumbnails": [
+            {
+                "src": "https://cdn.jetphotos.com/200/5/1034955_1769167341_tb.jpg?v=0",
+                "link": "https://www.jetphotos.com/photo/11993994",
+                "copyright": "Emil Kucharski",
+                "source": "Jetphotos"
+            },
+            {
+                "src": "https://cdn.jetphotos.com/200/5/65277_1611255115_tb.jpg?v=0",
+                "link": "https://www.jetphotos.com/photo/10033709",
+                "copyright": "Adam Szczepkowski",
+                "source": "Jetphotos"
+            },
+            {
+                "src": "https://cdn.jetphotos.com/200/6/90500_1516226463_tb.jpg?v=0",
+                "link": "https://www.jetphotos.com/photo/8829740",
+                "copyright": "KrzysztofDusza",
+                "source": "Jetphotos"
+            },
+            {
+                "src": "https://cdn.jetphotos.com/200/6/33131_1401573611_tb.jpg?v=0",
+                "link": "https://www.jetphotos.com/photo/7834925",
+                "copyright": "Piotr Trojan",
+                "source": "Jetphotos"
+            },
+            {
+                "src": "https://cdn.jetphotos.com/200/3/36644_1370632684_tb.jpg?v=0",
+                "link": "https://www.jetphotos.com/photo/7624564",
+                "copyright": "Jarek Kania ",
+                "source": "Jetphotos"
+            }
+        ],
+        "medium": [
+            {
+                "src": "https://cdn.jetphotos.com/400/5/1034955_1769167341.jpg?v=0",
+                "link": "https://www.jetphotos.com/photo/11993994",
+                "copyright": "Emil Kucharski",
+                "source": "Jetphotos"
+            },
+            {
+                "src": "https://cdn.jetphotos.com/400/5/65277_1611255115.jpg?v=0",
+                "link": "https://www.jetphotos.com/photo/10033709",
+                "copyright": "Adam Szczepkowski",
+                "source": "Jetphotos"
+            },
+            {
+                "src": "https://cdn.jetphotos.com/400/6/90500_1516226463.jpg?v=0",
+                "link": "https://www.jetphotos.com/photo/8829740",
+                "copyright": "KrzysztofDusza",
+                "source": "Jetphotos"
+            },
+            {
+                "src": "https://cdn.jetphotos.com/400/6/33131_1401573611.jpg?v=0",
+                "link": "https://www.jetphotos.com/photo/7834925",
+                "copyright": "Piotr Trojan",
+                "source": "Jetphotos"
+            },
+            {
+                "src": "https://cdn.jetphotos.com/400/3/36644_1370632684.jpg?v=0",
+                "link": "https://www.jetphotos.com/photo/7624564",
+                "copyright": "Jarek Kania ",
+                "source": "Jetphotos"
+            }
+        ],
+        "large": [
+            {
+                "src": "https://cdn.jetphotos.com/640cb/5/1034955_1769167341.jpg?v=0",
+                "link": "https://www.jetphotos.com/photo/11993994",
+                "copyright": "Emil Kucharski",
+                "source": "Jetphotos"
+            },
+            {
+                "src": "https://cdn.jetphotos.com/640cb/5/65277_1611255115.jpg?v=0",
+                "link": "https://www.jetphotos.com/photo/10033709",
+                "copyright": "Adam Szczepkowski",
+                "source": "Jetphotos"
+            },
+            {
+                "src": "https://cdn.jetphotos.com/640cb/6/90500_1516226463.jpg?v=0",
+                "link": "https://www.jetphotos.com/photo/8829740",
+                "copyright": "KrzysztofDusza",
+                "source": "Jetphotos"
+            },
+            {
+                "src": "https://cdn.jetphotos.com/640cb/6/33131_1401573611.jpg?v=0",
+                "link": "https://www.jetphotos.com/photo/7834925",
+                "copyright": "Piotr Trojan",
+                "source": "Jetphotos"
+            },
+            {
+                "src": "https://cdn.jetphotos.com/640cb/3/36644_1370632684.jpg?v=0",
+                "link": "https://www.jetphotos.com/photo/7624564",
+                "copyright": "Jarek Kania ",
+                "source": "Jetphotos"
+            }
+        ]
+    },
+    "full_origin": "Warsaw Babice Airport",
+    "full_destination": "N/A",
+    "origin_city": "Warsaw",
+    "destination_city": "N/A",
+    "origin_terminal": null,
+    "origin_gate": null,
+    "destination_terminal": "N/A",
+    "destination_gate": "N/A",
+    "scheduled_departure": 0,
+    "scheduled_arrival": 0,
+    "real_departure": 1778949575,
+    "estimated_arrival": null,
+    "eta": 0,
+    "flight_time": "0 min",
+    "delay": "on time",
+    "fr24_link": "https://www.flightradar24.com/SPTAM/3fb9b1e0"
+}

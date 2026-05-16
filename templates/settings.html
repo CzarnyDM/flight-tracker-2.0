@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>flight tracker · settings</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: monospace; background: #0d1117; color: #e6edf3; padding: 2rem; max-width: 1000px; margin: 0 auto; }
+    h1 { font-size: 1rem; color: #8b949e; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+    a { color: #58a6ff; text-decoration: none; font-size: 0.75rem; }
+    a:hover { text-decoration: underline; }
+    .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1.25rem; margin-bottom: 1rem; }
+    .card-title { font-size: 0.7rem; color: #8b949e; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .field { margin-bottom: 1rem; }
+    .field:last-child { margin-bottom: 0; }
+    label { display: block; font-size: 0.7rem; color: #8b949e; margin-bottom: 4px; }
+    input, textarea { width: 100%; background: #0d1117; border: 1px solid #30363d; border-radius: 4px; padding: 6px 10px; color: #e6edf3; font-family: monospace; font-size: 0.8rem; }
+    input:focus, textarea:focus { outline: none; border-color: #58a6ff; }
+    textarea { resize: vertical; min-height: 60px; }
+    .hint { font-size: 0.65rem; color: #8b949e; margin-top: 4px; }
+    .btn-row { display: flex; gap: 8px; margin-top: 1.5rem; }
+    button { font-family: monospace; font-size: 0.75rem; padding: 7px 16px; border-radius: 4px; cursor: pointer; }
+    .btn-primary { background: #238636; color: #fff; border: none; }
+    .btn-primary:hover { background: #2ea043; }
+    .btn-secondary { background: transparent; color: #8b949e; border: 1px solid #30363d; }
+    .btn-secondary:hover { border-color: #8b949e; color: #e6edf3; }
+    .nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+    .coords { font-size: 0.7rem; color: #8b949e; margin-top: 8px; }
+    .coords span { color: #e6edf3; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <h1>// settings</h1>
+    <a href="/">← back to tracker</a>
+  </div>
+
+  <form id="settings-form" action="/settings" method="POST">
+
+    <div class="card">
+      <div class="card-title">location</div>
+      <div id="map" style="height:300px;border-radius:6px;margin-bottom:12px;"></div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+        <label style="white-space:nowrap;margin:0;">radius</label>
+        <input type="range" min="1000" max="50000" step="500" value="{{ settings.radius }}" id="radius-slider" style="flex:1;padding:0;" />
+        <span id="radius-val" style="min-width:60px;font-size:0.8rem;">{{ settings.radius }}m</span>
+      </div>
+      <div class="coords">lat: <span id="lat-display">{{ settings.lat }}</span> · lon: <span id="lon-display">{{ settings.lon }}</span></div>
+      <input type="hidden" name="lat" id="lat-input" value="{{ settings.lat }}" />
+      <input type="hidden" name="lon" id="lon-input" value="{{ settings.lon }}" />
+      <input type="hidden" name="radius" id="radius-input" value="{{ settings.radius }}" />
+    </div>
+
+    <div class="card">
+      <div class="card-title">radar settings</div>
+      <div class="row3">
+        <div class="field">
+          <label>max altitude (ft)</label>
+          <input type="number" name="max_fl" value="{{ settings.max_fl }}" />
+          <div class="hint">filter flights above this altitude</div>
+        </div>
+        <div class="field">
+          <label>flight limit</label>
+          <input type="number" name="limit" value="{{ settings.limit }}" />
+          <div class="hint">max flights to scan per loop</div>
+        </div>
+        <div class="field">
+          <label>scan interval (s)</label>
+          <input type="number" name="interval" value="{{ settings.interval or 10 }}" />
+          <div class="hint">seconds between scans</div>
+        </div>
+      </div>
+    </div>
+<div class="card">
+      <div class="card-title">notifications</div>
+      <div class="field">
+        <label>discord webhook url</label>
+        <input type="text" name="discord_webhook" value="{{ settings.discord_webhook or '' }}" placeholder="https://discord.com/api/webhooks/..." />
+        <div class="hint">leave empty to disable discord alerts</div>
+      </div>
+      <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid #30363d;font-size:0.72rem;color:#8b949e;line-height:1.8;">
+        <div style="color:#e6edf3;margin-bottom:6px;">how to get a webhook url</div>
+        1. open discord and go to your server<br>
+        2. right click a channel → <strong>edit channel</strong><br>
+        3. go to <strong>integrations</strong> → <strong>webhooks</strong> → <strong>new webhook</strong><br>
+        4. give it a name, click <strong>copy webhook url</strong><br>
+        5. paste it above
+      </div>
+    </div>
+    <div class="btn-row">
+      <button type="submit" class="btn-primary">save settings</button>
+      <a href="/"><button type="button" class="btn-secondary">cancel</button></a>
+    </div>
+
+  </form>
+
+  <script>
+    const map = L.map('map').setView([{{ settings.lat }}, {{ settings.lon }}], 12);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+    let marker = L.marker([{{ settings.lat }}, {{ settings.lon }}], {draggable: true}).addTo(map);
+    let circle = L.circle([{{ settings.lat }}, {{ settings.lon }}], {
+        radius: {{ settings.radius }},
+        color: '#58a6ff',
+        fillOpacity: 0.1
+    }).addTo(map);
+
+    function updateCoords(lat, lon) {
+        document.getElementById('lat-input').value = lat.toFixed(6);
+        document.getElementById('lon-input').value = lon.toFixed(6);
+        document.getElementById('lat-display').textContent = lat.toFixed(6);
+        document.getElementById('lon-display').textContent = lon.toFixed(6);
+    }
+
+    marker.on('dragend', function(e) {
+        const pos = marker.getLatLng();
+        circle.setLatLng(pos);
+        updateCoords(pos.lat, pos.lng);
+    });
+
+    map.on('click', function(e) {
+        marker.setLatLng(e.latlng);
+        circle.setLatLng(e.latlng);
+        updateCoords(e.latlng.lat, e.latlng.lng);
+    });
+
+    const radiusSlider = document.getElementById('radius-slider');
+    const radiusVal = document.getElementById('radius-val');
+
+    radiusSlider.addEventListener('input', function() {
+        const r = parseInt(this.value);
+        radiusVal.textContent = r + 'm';
+        circle.setRadius(r);
+        document.getElementById('radius-input').value = r;
+    });
+  </script>
+
+</body>
+</html>
